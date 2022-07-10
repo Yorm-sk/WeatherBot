@@ -1,0 +1,1 @@
+web: java -jar out/artifacts/WeatherBot_jar/WeatherBot.jar
