@@ -24,7 +24,6 @@ hs_err_pid*
 replay_pid*
 /.idea
 /target
-/out
 /META-INF
 /users
 /src/main/resources/bot.properties
