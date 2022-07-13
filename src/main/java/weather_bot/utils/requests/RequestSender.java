@@ -10,9 +10,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.ResourceBundle;
 
 public class RequestSender {
     private static final Logger LOGGER = LogManager.getLogger(RequestSender.class);
+    private static final ResourceBundle resource = ResourceBundle.getBundle("weather");
+    private static final String appId = resource.getString("appid");
 
     public static String getStringFromCurrentWeatherResponse(double lat, double lon, boolean isRu) {
         StringBuilder result = new StringBuilder();
@@ -21,12 +24,12 @@ public class RequestSender {
             if (isRu) url =
                     new URL("https://api.openweathermap.org/data/2.5/weather?lat=" + lat +
                             "&lon=" + lon +
-                            "&appid=307be471edad0bcb829b53082c0b00a7" +
+                            "&appid="+ appId +
                             "&units=metric&lang=ru");
             else url =
                     new URL("https://api.openweathermap.org/data/2.5/weather?lat=" + lat +
                             "&lon=" + lon +
-                            "&appid=307be471edad0bcb829b53082c0b00a7" +
+                            "&appid="+ appId +
                             "&units=metric&lang=en");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
@@ -55,14 +58,14 @@ public class RequestSender {
                     new URL("https://api.openweathermap.org/data/2.5/forecast?" +
                             "lat=" + lat +
                             "&lon=" + lon +
-                            "&appid=307be471edad0bcb829b53082c0b00a7" +
+                            "&appid="+ appId +
                             "&units=metric&" +
                             "lang=ru" +
                             "&cnt=9");
             else url =
                     new URL("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat +
                             "&lon=" + lon +
-                            "&appid=307be471edad0bcb829b53082c0b00a7" +
+                            "&appid="+ appId +
                             "&units=metric&" +
                             "lang=en" +
                             "&cnt=9");
