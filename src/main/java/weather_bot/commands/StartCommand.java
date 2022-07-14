@@ -3,7 +3,9 @@ package weather_bot.commands;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import weather_bot.utils.Constant;
-
+/**
+ * Contain methods that refer to /start command
+ * **/
 public class StartCommand extends BotCommand {
 
     public StartCommand(String lang){

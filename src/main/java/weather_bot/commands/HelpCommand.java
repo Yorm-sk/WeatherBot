@@ -5,6 +5,9 @@ import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import weather_bot.utils.Constant;
 
+/**
+ * Contain methods that refer to /help command
+ * **/
 public class HelpCommand extends BotCommand {
 
     public HelpCommand(String lang) {

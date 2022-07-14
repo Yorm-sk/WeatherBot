@@ -2,6 +2,9 @@ package weather_bot.utils;
 
 import java.util.HashMap;
 
+/**
+ * Contains String constants for russian and english messages and city names with coordinates
+ * **/
 public interface Constant {
     String NOT_COMMAND_MESSAGE_EN = "enter a command or coordinates property, please";
     String NOT_COMMAND_MESSAGE_RU = "пожалуйста введите команду или координаты правильно";

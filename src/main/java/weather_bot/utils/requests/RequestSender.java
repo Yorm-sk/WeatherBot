@@ -11,7 +11,9 @@ import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
-
+/**
+ * Make request to open weather site and receive json, converted to string
+ * **/
 public class RequestSender {
     private static final Logger LOGGER = LogManager.getLogger(RequestSender.class);
     private static final ResourceBundle resource = ResourceBundle.getBundle("weather");

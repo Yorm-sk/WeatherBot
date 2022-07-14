@@ -15,7 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * Contain methods that refer to /next24hours command
+ * **/
 public class Next24HoursCommand extends BotCommand {
     public Next24HoursCommand(String lang) {
         setCommand("next24hours");
@@ -23,6 +25,9 @@ public class Next24HoursCommand extends BotCommand {
         else setDescription(Constant.NEXT_COMMAND_DESCRIPTION_EN);
     }
 
+    /**
+     * Method send group of photos with weather description
+     * **/
     public static SendMediaGroup sendDayForecast(Message message, boolean isRu){
         SendMediaGroup sendMediaGroup = new SendMediaGroup();
         sendMediaGroup.setChatId(Long.toString(message.getChatId()));
@@ -30,6 +35,9 @@ public class Next24HoursCommand extends BotCommand {
         return sendMediaGroup;
     }
 
+    /**
+     * Make request to openWeather parse it java classes and return list of photos with description
+     * **/
     private static List<InputMedia> getListFromResponse(long userId, boolean isRu){
         User user = JsonExecutor.readUser(userId);
         WeatherFor24Hours weather = JsonExecutor.getWeatherForNext24Hours(user.getLat(), user.getLon(), isRu);
@@ -45,6 +53,9 @@ public class Next24HoursCommand extends BotCommand {
         return result;
     }
 
+    /**
+     * Return needed description for photo
+     * **/
     private static String description(boolean isRu, WeatherForCurrentHour weather, String city){
         String result;
         SimpleDateFormat formatter = new SimpleDateFormat("MM-dd HH:mm");

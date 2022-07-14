@@ -9,7 +9,9 @@ import weather_bot.utils.Constant;
 import weather_bot.utils.json.JsonExecutor;
 import weather_bot.utils.json.User;
 import weather_bot.utils.json.nowWeatherClasses.WeatherInfo;
-
+/**
+ * Contain methods that refer to /now command
+ * **/
 public class NowWeatherCommand extends BotCommand {
     public NowWeatherCommand(String lang) {
         setCommand("now");

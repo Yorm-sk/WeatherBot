@@ -6,7 +6,14 @@ import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import weather_bot.utils.Constant;
 import weather_bot.utils.json.JsonExecutor;
 import weather_bot.utils.json.User;
-
+/**
+ * Contain methods that refer to /coordinates command
+ * There is for methods to set coordinates:
+ *  - send coordinates in format latitude,longitude
+ *  - send name of city, that contains in Constant dictionaries
+ *  - send your current geolocation
+ *  - just enter /coordinate command to set uo Kyiv coordinates
+ * **/
 public class SetCoordinates extends BotCommand {
     public SetCoordinates(String lang) {
         setCommand("coordinates");

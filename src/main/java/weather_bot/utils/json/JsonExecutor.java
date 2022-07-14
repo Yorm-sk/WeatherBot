@@ -12,34 +12,40 @@ import weather_bot.utils.requests.RequestSender;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+/**
+ * Make json to java files and vise versa
+ * **/
 public class JsonExecutor {
     private static final Logger LOGGER = LogManager.getLogger(JsonExecutor.class);
-    public static void saveUser(User user){
+
+    public static void saveUser(User user) {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-        File file = new File(WeatherBot.getPath() +"\\users");
-        String path = WeatherBot.getPath() + "\\users\\" + user.getId() +".json";
+        File file = new File(String.valueOf(Paths.get(WeatherBot.getPath(), "users")));
+        Path path = Paths.get(WeatherBot.getPath(), "users", user.getId() + ".json");
         file.mkdirs();
         try {
-            objectMapper.writeValue(new File(path), user);
+            objectMapper.writeValue(new File(String.valueOf(path)), user);
         } catch (IOException e) {
             LOGGER.error("File was not written");
         }
     }
 
-    public static User readUser(long userId){
+    public static User readUser(long userId) {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-        String path = WeatherBot.getPath() + "\\users\\" + userId +".json";
+        Path path = Paths.get(WeatherBot.getPath(), "users", userId + ".json");
         User user = null;
         try {
-            user = objectMapper.readValue(new File(path), User.class);
+            user = objectMapper.readValue(new File(String.valueOf(path)), User.class);
         } catch (IOException e) {
             LOGGER.error("No such user");
         }
         return user;
     }
 
-    public static WeatherInfo getWeatherForItsCoordinate(double lat, double lon, boolean isRu){
+    public static WeatherInfo getWeatherForItsCoordinate(double lat, double lon, boolean isRu) {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         WeatherInfo weatherInfo = null;
         try {
@@ -52,7 +58,7 @@ public class JsonExecutor {
         return weatherInfo;
     }
 
-    public static WeatherFor24Hours getWeatherForNext24Hours(double lat, double lon, boolean isRu){
+    public static WeatherFor24Hours getWeatherForNext24Hours(double lat, double lon, boolean isRu) {
         ObjectMapper objectMapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
         WeatherFor24Hours weather = null;
         try {

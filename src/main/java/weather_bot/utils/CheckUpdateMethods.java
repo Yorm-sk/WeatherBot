@@ -1,17 +1,18 @@
 package weather_bot.utils;
 
-import org.apache.commons.lang3.StringUtils;
 import weather_bot.WeatherBot;
 import weather_bot.enums.CommandType;
 
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Locale;
 import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ * Contain only boolean methods to check input data
+ * **/
 public class CheckUpdateMethods {
 
     public static boolean isMessageCommand(String message) {

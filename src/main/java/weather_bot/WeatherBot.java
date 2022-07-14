@@ -13,7 +13,10 @@ import weather_bot.utils.Constant;
 
 import java.util.List;
 import java.util.ResourceBundle;
-
+/**
+ * Class contain main methods of the bot, it uses getUpdate rest api calls, to receive information from users
+ * It will work only in private messages or when it`s unique bot in chat
+ * **/
 public class WeatherBot extends TelegramLongPollingBot {
     private static final Logger LOGGER = LogManager.getLogger(WeatherBot.class);
     private static String path;
@@ -21,16 +24,27 @@ public class WeatherBot extends TelegramLongPollingBot {
     private final String botName = resource.getString("bot.name");
     private final String botToken = resource.getString("bot.token");
 
+    /**
+     * Here we must return bot name for it`s registration
+     * **/
     @Override
     public String getBotUsername() {
         return botName;
     }
 
+    /**
+     * Here we must return bot token for it`s registration
+     * **/
     @Override
     public String getBotToken() {
         return botToken;
     }
 
+
+    /**
+     * Methods call getUpdates methods and transform json to java objects, process text of message and perform some
+     * actions based on the text
+     * **/
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage() && update.getMessage().hasText()) {
@@ -94,6 +108,9 @@ public class WeatherBot extends TelegramLongPollingBot {
         }
     }
 
+    /**
+     * do post request to telegram api and set up bot commands according to it`s language
+     * **/
     public void setCommands(String lang) {
         SetMyCommands commands = new SetMyCommands();
         commands.setCommands(List.of(new StartCommand(lang), new HelpCommand(lang), new NowWeatherCommand(lang),
@@ -101,10 +118,13 @@ public class WeatherBot extends TelegramLongPollingBot {
         try {
             execute(commands);
         } catch (TelegramApiException e) {
-            throw new RuntimeException(e);
+            LOGGER.error(e.getMessage());
         }
     }
 
+    /**
+     * Executes methods according to bot command
+     * **/
     public void execute(String command, Update update, boolean isRu) throws TelegramApiException {
         switch (command) {
             case "/start":

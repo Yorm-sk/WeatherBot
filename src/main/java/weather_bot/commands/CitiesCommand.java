@@ -8,7 +8,9 @@ import weather_bot.utils.Constant;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
+/**
+ * Contain methods that refer to /cities command
+ * **/
 public class CitiesCommand extends BotCommand {
 
     public CitiesCommand(String lang) {
